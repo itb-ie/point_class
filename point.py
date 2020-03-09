@@ -23,6 +23,7 @@ class Point(object):
         # the same exact thig as: return "<" + str(self.x) + "," + str(self.y) + ">"
 
     def __repr__(self):
+        # this is when you want to print a list of points
         return "<{},{}>".format(self.x, self.y)
 
     def distance(self, other=None):
@@ -38,9 +39,11 @@ class Point(object):
         y = self.y + other.y
         return Point(x, y)
 
+    # overload the ==
     def __eq__(self, other):
         return (self.x == other.x) and (self.y == other.y)
 
+    # overload the <
     def __lt__(self, other):
         #compare the distance to origin for both self and other
         return self.distance() < other.distance()
@@ -58,13 +61,13 @@ lp = [p, p2]
 print(lp)
 p3 = p + p2
 print(p3)
-p4 = Point(5,8)
-print(p3==p4)
+p4 = Point(5, 8)
+print(p3 == p4)
 print(p3 < p4)
 lp.append(p3)
 lp.append(p4)
-lp.append(Point(1,0, "yellow"))
-# the cool part is that because i have __lt__ and __eq__ I can now sort the list
+lp.append(Point(1, 0, "yellow"))
+# the cool part is that because I have __lt__ and __eq__ I can now sort the list
 lp.sort()
 print(lp)
 
